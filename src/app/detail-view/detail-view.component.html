@@ -1,0 +1,21 @@
+<h2>Détail de {{etudiant.prenom}} {{etudiant.nom}} ({{etudiant.id}})</h2>
+<div class="row">
+    <div class="col-sm-7">
+        <h3>Information sur l'étudiant</h3>
+        <p>Prénom : {{etudiant.prenom}}</p>
+        <p>Nom : {{etudiant.nom}}</p>
+        <p>Email : {{etudiant.email}}</p>
+        <p>Telephone : {{etudiant.telephone}}</p>
+        <p>Boursier : {{etudiant.isBoursier}}</p>
+        <p>Date de naissance : {{etudiant.dateNaissance}}</p>
+        <p>Moyenne : {{getMoyenne(etudiant)}}</p>
+    </div>
+    <div class="col-sm-5">
+        <h3>Détail des notes</h3>
+        <ul>
+            <li *ngFor="let note of etudiant.Notes">
+                <p>{{note.matiere}} : {{note.valeur}}</p>
+            </li>
+        </ul>
+    </div>
+</div>

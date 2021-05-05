@@ -1,0 +1,37 @@
+<h2>Les étudiants inscrits</h2>
+<table class="table table-hover table-bordered table-responsive">
+    <thead>
+        <tr>
+            <th>Nom</th>
+            <th>Prénom</th>
+            <th>Mail</th>
+            <th>Id</th>
+            <th>Boursier</th>
+            <th>Date de Naissance</th>
+            <th>Numéro téléphone</th>
+            <th (click)="onMoyenne()">Moyenne des notes</th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr *ngFor="let etu of this.persistance.get('etus')" 
+        (click)='onDetail(etu)'        
+        >
+            <td>{{etu.nom}}</td>
+            <td>{{etu.prenom}}</td>
+            <td>{{etu.email}}</td>
+            <td>{{etu.id}}</td>
+            <td>{{etu.isBoursier}}</td>
+            <td>{{etu.dateNaissance}}</td>
+            <td>{{etu.telephone}}</td>
+            <td>{{getMoyenne(etu)}}</td>
+            <td>
+
+                <button class="btn btn-success" (click)="onEtudiant(etu)">Modifier & ajouter note</button>
+                <button class="btn btn-warning" (click)="onDelete(etu)">Supprimer</button>
+            </td>
+        </tr>
+    </tbody>
+</table>
+<app-modify-etu *ngIf="selectedEtu != null" [etudiant]="selectedEtu"></app-modify-etu>
+<app-detail-view *ngIf="detailedEtu !=null" [etudiant]="detailedEtu"></app-detail-view>
